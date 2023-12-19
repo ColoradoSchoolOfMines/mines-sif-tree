@@ -7,10 +7,16 @@ body {
     background-color: cornflowerblue;
     width: 20%;
     padding: 25px;
+    margin-right: 2%;
     text-align: center;
 }
 
 .option h1 {
     color: white;
     font-weight: bold;
+}
+
+.options {
+    display: flex;
+    flex-direction: row;
 }

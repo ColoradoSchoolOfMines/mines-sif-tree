@@ -1,7 +1,4 @@
-/* <uniquifier>: Use a unique and descriptive class name
-   <weight>: Use a value from 300 to 800 */
-
-/* font styles */
+/* general styles */
 * {
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
@@ -10,10 +7,10 @@
     font-variation-settings: "wdth" 100;
 }
 
-.open-sans-header {
-    font-weight: 700;
+h1 {
+    margin: 20px 0 20px 0;
 }
-
+    
 /* flex container */
 #flex-container {
     margin: 2rem;
@@ -27,38 +24,66 @@
     padding: 0 2rem 0 2rem;
     color: white;
     width: 24rem;
-    height: 36rem;
+    height: auto;
 }
 
 /* options panel*/
-#option-panel {
+#options-panel {
     color: #21314d;
     width: 128rem;
-}
-
-#option-panel h1 {
-    text-align: center;
-    margin-bottom: 0;
+    margin-left: 2rem
 }
 
 .options-container {
     display: flex;
     justify-content: left;
-    gap: 12px;
-    margin: 0 0 0 4rem;
     flex-wrap: wrap;
+    gap: 4px;
 }
 
 .options-group {
-    width: 12rem;
-    margin: 2rem 0 0 0;
+    width: 13rem;
+    background-color: #CFDCE9;
+    padding: 8px;
 }
 
 .options-group h3 {
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    font-weight: 700;
 }
 
-.checkboxes {
+/* custom checkboxes */
+.checkbox-container {
+    font-size: 16px;
     display: flex;
-    flex-direction: column;
+    gap: 4px;
+}
+
+.checkbox-container span {
+    padding-top: 2px;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-text-select: none;
+    -webkit-user-select: none;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    background-color: #fff;
+    padding: 4px;
+    color: #21314d;
+    width: 20px;
+    height: 20px;
+    border: 2.5px solid #21314d;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:hover {
+    background-color: #879EC3;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #21314d;
 }

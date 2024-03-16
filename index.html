@@ -1,69 +1,179 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
     <title>Mines SIF Tree</title>
-    <link rel="stylesheet" href="./styles.css">
+    <!-- Open Sans font import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
-
-<div class="options">
-    <div class="option-set">
-        <div class="option primary" data-id="1">
-            <h1>Option #1</h1>
+    <div id="flex-container">
+        <!-- TODO: Replace instruments-panel w/ Jayden's stuff -->
+        <div id="instruments-panel">
+            <h1>Instruments</h1>
+            <p>This is some dummy text for the dummy instruments panel.</p>
         </div>
-        <div id="dropdown1">
-            <div class="option secondary">
-                <h1>Option a</h1>
-            </div>
-            <div class="option secondary">
-                <h1>Option b</h1>
-            </div>
-            <div class="option secondary">
-                <h1>Option c</h1>
+        <div id="option-panel">
+            <h1 class="open-sans-header">Options</h1>
+            <div class="options-container">
+                <div class="options-group">
+                    <h3>Phase</h3>
+                    <div class="checkboxes">
+                        <div>
+                            <input type="checkbox">Solid
+                        </div>
+                        <div>
+                            <input type="checkbox">Liquid
+                        </div>
+                    </div>
+                </div>
+                <div class="options-group">
+                    <h3>Solid Form</h3>
+                    <div class="checkboxes">
+                        <div>
+                            <input type="checkbox">Crystalline
+                        </div>
+                        <div>
+                            <input type="checkbox">Amorphous
+                        </div>
+                        <div>
+                            <input type="checkbox">Thin Film
+                        </div>
+                        <div>
+                            <input type="checkbox">Powder
+                        </div>
+                    </div>
+                </div>
+                <div class="options-group">
+                    <h3>Solid Properties</h3>
+                    <div class="checkboxes">
+                        <div>
+                            <input type="checkbox">Phase
+                        </div>
+                        <div>
+                            <input type="checkbox">Crystallographic Texture
+                        </div>
+                        <div>
+                            <input type="checkbox">Strain
+                        </div>
+                        <div>
+                            <input type="checkbox">Bonding
+                        </div>
+                    </div>
+                </div>
+                <div class="options-group">
+                    <h3>Spatial Resolution</h3>
+                    <div class="checkboxes">
+                        <div>
+                            <input type="checkbox">N/A
+                        </div>
+                        <div>
+                            <input type="checkbox">mm
+                        </div>
+                        <div>
+                            <input type="checkbox">&mu;m
+                        </div>
+                        <div>
+                            <input type="checkbox">nm
+                        </div>
+                    </div>
+                </div>
+                <div class="options-group">
+                    <h3>Dimensionality</h3>
+                    <div class="checkboxes">
+                        <div>
+                            <input type="checkbox">1D
+                        </div>
+                        <div>
+                            <input type="checkbox">2D
+                        </div>
+                        <div>
+                            <input type="checkbox">3D
+                        </div>
+                    </div>
+                </div>
+                <div class="options-group">
+                    <h3>Compositional Sensitivity</h3>
+                    <div class="checkboxes">
+                        <div>
+                            <input type="checkbox">N/A
+                        </div>
+                        <div>
+                            <input type="checkbox">A Few At%
+                        </div>
+                        <div>
+                            <input type="checkbox">PPM
+                        </div>
+                    </div>
+                </div>
+                <div class="options-group">
+                    <h3>Temperature</h3>
+                    <div class="checkboxes">
+                        <div>
+                            <input type="checkbox">Room Temperature
+                        </div>
+                        <div>
+                            <input type="checkbox">Heated
+                        </div>
+                        <div>
+                            <input type="checkbox">Cooled
+                        </div>
+                    </div>
+                </div>
+                <div class="options-group">
+                    <h3>Mechanial Loading</h3>
+                    <div class="checkboxes">
+                        <div>
+                            <input type="checkbox">N/A
+                        </div>
+                        <div>
+                            <input type="checkbox">Tension
+                        </div>
+                        <div>
+                            <input type="checkbox">Compression
+                        </div>
+                        <div>
+                            <input type="checkbox">Bending
+                        </div>
+                        <div>
+                            <input type="checkbox">Fatigue
+                        </div>
+                    </div>
+                </div>
+                <div class="options-group">
+                    <h3>Force Ranges</h3>
+                    <div class="checkboxes">
+                        <div>
+                            <input type="checkbox">nN
+                        </div>
+                        <div>
+                            <input type="checkbox">N
+                        </div>
+                        <div>
+                            <input type="checkbox">kN
+                        </div>
+                    </div>
+                </div>
+                <div class="options-group">
+                    <h3>Atmosphere</h3>
+                    <div class="checkboxes">
+                        <div>
+                            <input type="checkbox">Ambient
+                        </div>
+                        <div>
+                            <input type="checkbox">Vacuum
+                        </div>
+                        <div>
+                            <input type="checkbox">Other
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    
-    <div class="option-set">
-        <div class="option primary" data-id="2">
-            <h1>Option #2</h1>
-        </div>
-        <div id="dropdown2">
-            <div class="option secondary">
-                <h1>Option a</h1>
-            </div>
-            <div class="option secondary">
-                <h1>Option b</h1>
-            </div>
-            <div class="option secondary">
-                <h1>Option c</h1>
-            </div>
-        </div>
-    </div>
-    
-    <div class="option-set">
-        <div class="option primary" data-id="3">
-            <h1>Option #3</h1>
-        </div>
-        <div id="dropdown3">
-            <div class="option secondary">
-                <h1>Option a</h1>
-            </div>
-            <div class="option secondary">
-                <h1>Option b</h1>
-            </div>
-            <div class="option secondary">
-                <h1>Option c</h1>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- TODO use data attributes for next click -->
-<!-- https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes -->
-
-<script src="./script.js"></script>
 </body>
 </html>

@@ -1,0 +1,64 @@
+/* <uniquifier>: Use a unique and descriptive class name
+   <weight>: Use a value from 300 to 800 */
+
+/* font styles */
+* {
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+.open-sans-header {
+    font-weight: 700;
+}
+
+/* flex container */
+#flex-container {
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+/* dummy instruments panel */
+#instruments-panel {
+    background-color: #21314d;
+    padding: 0 2rem 0 2rem;
+    color: white;
+    width: 24rem;
+    height: 36rem;
+}
+
+/* options panel*/
+#option-panel {
+    color: #21314d;
+    width: 128rem;
+}
+
+#option-panel h1 {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.options-container {
+    display: flex;
+    justify-content: left;
+    gap: 12px;
+    margin: 0 0 0 4rem;
+    flex-wrap: wrap;
+}
+
+.options-group {
+    width: 12rem;
+    margin: 2rem 0 0 0;
+}
+
+.options-group h3 {
+    margin: 0 0 0.5rem 0;
+}
+
+.checkboxes {
+    display: flex;
+    flex-direction: column;
+}

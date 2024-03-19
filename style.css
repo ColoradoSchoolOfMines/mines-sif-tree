@@ -20,11 +20,30 @@ h1 {
 
 /* dummy instruments panel */
 #instruments-panel {
-    background-color: #21314d;
-    padding: 0 2rem 0 2rem;
+    background-color: #CFDCE9;
+    padding: 0 1rem 0 1rem;
     color: white;
     width: 24rem;
     height: auto;
+}
+
+.instrument {
+    background-color: #21314d;
+    margin: 1px;
+    height: auto;
+    padding: 3px 10px;
+}
+
+.greyed-out {
+    background-color: #C0C0C0;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
 }
 
 /* options panel*/

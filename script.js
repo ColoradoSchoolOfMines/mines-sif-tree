@@ -141,6 +141,7 @@ const data = {
 
 const checkboxContainers = document.getElementsByClassName("checkbox-container");
 const instrumentsContainer = document.getElementById("instruments-panel");
+const errorMsg = document.getElementById("error-msg");
 let selectedOptions = [];
 
 function addOption(option) {
@@ -177,6 +178,7 @@ function updateOptionsList() {
 }
 
 function updateInstruments(options) {
+    let anySuccess = false;
     for (let name in data) {
         let match = true;
         for (let i = 0; i < options.length; i++) {
@@ -188,10 +190,13 @@ function updateInstruments(options) {
         let instrumentDiv = document.getElementById(name);
         if (match) {
             instrumentDiv.classList.remove("greyed-out");
+            anySuccess = true;
         } else {
             instrumentDiv.classList.add("greyed-out");
         }
     }
+    console.log(anySuccess)
+    errorMsg.style.visibility = anySuccess ? 'hidden' : 'visible';
 }
 
 // create all instruments in instrument panel

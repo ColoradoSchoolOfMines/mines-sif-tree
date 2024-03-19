@@ -46,6 +46,11 @@ a:hover {
     text-decoration: underline;
 }
 
+#error-msg {
+    color: red;
+    visibility: hidden;
+}
+
 /* options panel*/
 #options-panel {
     color: #21314d;

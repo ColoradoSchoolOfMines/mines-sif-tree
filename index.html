@@ -1,69 +1,199 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Mines SIF Tree</title>
-	<link rel="stylesheet" href="./styles.css">
+    <!-- Add a Clear All Button! -->
+    <meta charset="utf-8">
+    <title>Mines SIF Tree</title>
+    <!-- Open Sans font import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-
-<div class="options">
-	<div class="option-set">
-		<div class="option primary" data-id="1">
-			<h1>Option #1</h1>
-		</div>
-		<div id="dropdown1">
-			<div class="option secondary">
-				<h1>Option a</h1>
-			</div>
-			<div class="option secondary">
-				<h1>Option b</h1>
-			</div>
-			<div class="option secondary">
-				<h1>Option c</h1>
-			</div>
-		</div>
-	</div>
-	
-	<div class="option-set">
-		<div class="option primary" data-id="2">
-			<h1>Option #2</h1>
-		</div>
-		<div id="dropdown2">
-			<div class="option secondary">
-				<h1>Option a</h1>
-			</div>
-			<div class="option secondary">
-				<h1>Option b</h1>
-			</div>
-			<div class="option secondary">
-				<h1>Option c</h1>
-			</div>
-		</div>
-	</div>
-	
-	<div class="option-set">
-		<div class="option primary" data-id="3">
-			<h1>Option #3</h1>
-		</div>
-		<div id="dropdown3">
-			<div class="option secondary">
-				<h1>Option a</h1>
-			</div>
-			<div class="option secondary">
-				<h1>Option b</h1>
-			</div>
-			<div class="option secondary">
-				<h1>Option c</h1>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- TODO use data attributes for next click -->
-<!-- https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes -->
-
-<script src="./script.js"></script>
+    <div id="flex-container">
+        <!-- TODO: Replace instruments panel w/ Jayden's stuff -->
+        <div id="instruments-panel">
+            <h1>INSTRUMENTS</h1>
+        </div>
+        <div id="options-panel">
+            <h1 class="open-sans-header">OPTIONS</h1>
+            <div class="options-container">
+                <div class="options-group">
+                    <h3>Phase</h3>
+                    <div class="checkbox-container">
+                        <input id="phase-solid" type="checkbox">
+                        <span>Solid</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="phase-liquid" type="checkbox">
+                        <span>Liquid</span>
+                    </div>
+                </div>
+                <div class="options-group">
+                    <h3>Solid Form</h3>
+                    <div class="checkbox-container">
+                        <input id="solid_form-crystalline" type="checkbox">
+                        <span>Crystalline</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="solid_form-amorphous" type="checkbox">
+                        <span>Amorphous</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="solid_form-thin_film" type="checkbox">
+                        <span>Thin Film</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="solid_form-powder" type="checkbox">
+                        <span>Powder</span>
+                    </div>
+                </div>
+                <div class="options-group">
+                    <h3>Solid Properties</h3>
+                    <div class="checkbox-container">
+                        <input id="solid_props-phase" type="checkbox">
+                        <span>Phase</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="solid_props-crystallographic-texture" type="checkbox">
+                        <span>Crystallographic Texture</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="solid_props-strain" type="checkbox">
+                        <span>Strain</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="solid_props-bonding" type="checkbox">
+                        <span>Bonding</span>
+                    </div>
+                </div>
+                <div class="options-group">
+                    <h3>Spatial Resolution</h3>
+                    <div class="checkbox-container">
+                        <input id="spatial_res-na" type="checkbox">
+                        <span>N/A</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="spatial_res-mm" type="checkbox">
+                        <span>mm</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="spatial_res-um" type="checkbox">
+                        <span>&mu;m</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="spatial_res-nm" type="checkbox">
+                        <span>nm</span>
+                    </div>
+                </div>
+                <div class="options-group">
+                    <h3>Dimensionality</h3>
+                    <div class="checkbox-container">
+                        <input id="dimensionality-1d" type="checkbox">
+                        <span>1D</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="dimensionality-2d" type="checkbox">
+                        <span>2D</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="dimensionality-3d" type="checkbox">
+                        <span>3D</span>
+                    </div>
+                </div>
+                <div class="options-group">
+                    <h3>Compositional Sensitivity</h3>
+                    <div class="checkbox-container">
+                        <input id="comp_sensitivity-na" type="checkbox">
+                        <span>N/A</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="comp_sensitivity-a_few_at_%" type="checkbox">
+                        <span>A Few At %</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="comp_sensitivity-ppm" type="checkbox">
+                        <span>PPM</span>
+                    </div>
+                </div>
+                <div class="options-group">
+                    <h3>Temperature</h3>
+                    <div class="checkbox-container">
+                        <input id="temp-room" type="checkbox">
+                        <span>Room Temp</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="temp-heated" type="checkbox">
+                        <span>Heated</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="temp-cooled" type="checkbox">
+                        <span>Cooled</span>
+                    </div>
+                </div>
+                <div class="options-group">
+                    <h3>Mechanical Loading</h3>
+                    <div class="checkbox-container">
+                        <input id="mech_loading-na" type="checkbox">
+                        <span>N/A</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="mech_loading-tension" type="checkbox">
+                        <span>Tension</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="mech_loading-compression" type="checkbox">
+                        <span>Compression</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="mech_loading-bending" type="checkbox">
+                        <span>Bending</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="mech_loading-fatigue" type="checkbox">
+                        <span>Fatigue</span>
+                    </div>
+                </div>
+                <div class="options-group">
+                    <h3>Force Ranges</h3>
+                    <div class="checkbox-container">
+                        <input id="force_ranges-nn" type="checkbox">
+                        <span>nN</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="force_ranges-n" type="checkbox">
+                        <span>N</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="force_ranges-nk" type="checkbox">
+                        <span>kN</span>
+                    </div>
+                </div>
+                <div class="options-group">
+                    <h3>Atmosphere</h3>
+                    <div class="checkbox-container">
+                        <input id="atmosphere-ambient" type="checkbox">
+                        <span>Ambient</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="atmosphere-vacuum" type="checkbox">
+                        <span>Vacuum</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="atmosphere-other" type="checkbox">
+                        <span>Other</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p id="error-msg" disabled="true">
+        No instruments match the criteria that you selected!
+    </p>
+    <!-- TODO: Remove this after we've hooked up instruments -->
+    <div>Selected Options</div>
+    <div id="selected-options"></div>
 </body>
 </html>

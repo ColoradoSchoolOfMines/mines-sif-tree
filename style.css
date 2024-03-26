@@ -21,10 +21,14 @@ h1 {
 /* dummy instruments panel */
 #instruments-panel {
     background-color: #CFDCE9;
-    padding: 0 1rem 0 1rem;
+    padding: 0 1rem 1rem 1rem;
     color: white;
     width: 24rem;
     height: auto;
+}
+
+#instruments-panel h1 {
+    color: #21314d;
 }
 
 .instrument {
@@ -35,7 +39,9 @@ h1 {
 }
 
 .greyed-out {
-    background-color: #C0C0C0;
+    background-color: #cb2222;
+    pointer-events: none;
+    cursor: default;
 }
 
 a {

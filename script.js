@@ -1,7 +1,7 @@
 
 const data = {
     "test": {
-        "link": "google.com",
+        "link": "https://www.google.com/",
         "phase-solid": false,
         "phase-liquid": false,
         "solid_form-crystalline": false,
@@ -35,7 +35,7 @@ const data = {
         "atmosphere-other": false,
     },
     "Helios": {
-        "link": "",
+        "link": "https://www.mines.edu/shared-facilities/project/fei-helios-nanolab-600i-fib-sem/",
         "phase-solid": true,
         "phase-liquid": false,
         "solid_form-crystalline": true,
@@ -208,7 +208,12 @@ for (let name in data) {
     // create div contents
     let a = document.createElement('a');
     a.appendChild(document.createTextNode(name));
-    a.href = data[name].link;
+    a.setAttribute('href', data[name].link);
+
+    if (data[name].link !== "") {
+        a.setAttribute('target', "_blank");
+    }
+
     div.appendChild(a);
     // add to instruments panel
     instrumentsContainer.appendChild(div);

@@ -39,7 +39,7 @@ h1 {
 }
 
 .greyed-out {
-    background-color: #cb2222;
+    background-color: #a0a0a0;
     pointer-events: none;
     cursor: default;
 }

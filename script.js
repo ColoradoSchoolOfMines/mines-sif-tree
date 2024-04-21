@@ -1,7 +1,6 @@
-
 const checkboxContainers = document.getElementsByClassName("checkbox-container");
 const instrumentsContainer = document.getElementById("instruments-panel");
-const errorMsg = document.getElementById("error-msg");
+const msg = document.getElementById("msg");
 
 const clearBtn = document.getElementById("clear-btn");
 clearBtn.addEventListener('click', () => {
@@ -47,7 +46,9 @@ function updateInstruments() {
             instrumentDiv.classList.add("greyed-out");
         }
     }
-    errorMsg.style.visibility = anySuccess ? 'hidden' : 'visible';
+    msg.textContent = anySuccess ? 'Narrow down instruments by selecting from the options below.' 
+                                 : 'No instruments match the selected options.';
+    msg.style.color = anySuccess ? "#21314d" : 'red';
 }
 
 // create all instruments in instrument panel

@@ -18,7 +18,7 @@ h1 {
     justify-content: center;
 }
 
-/* dummy instruments panel */
+/* instruments panel */
 #instruments-panel {
     background-color: #CFDCE9;
     padding: 0 1rem 1rem 1rem;
@@ -116,4 +116,20 @@ input[type="checkbox"]:hover {
 
 input[type="checkbox"]:checked {
     background-color: #21314d;
+}
+
+button {
+    margin-top: 20px;
+    cursor: pointer;
+    border: 3px solid #21314d;
+    background-color: white;
+    color: #21314d;
+    padding: 8px;
+    font-size: medium;
+}
+
+button:hover {
+    background-color: #21314d;
+    color: white;
+    cursor: pointer;
 }

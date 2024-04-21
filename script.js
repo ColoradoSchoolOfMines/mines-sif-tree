@@ -2,6 +2,13 @@
 const checkboxContainers = document.getElementsByClassName("checkbox-container");
 const instrumentsContainer = document.getElementById("instruments-panel");
 const errorMsg = document.getElementById("error-msg");
+
+const clearBtn = document.getElementById("clear-btn");
+clearBtn.addEventListener('click', () => {
+    console.log("cleared!")
+    clearOptions();
+});
+
 let selectedOptions = [];
 
 function addOption(option) {
@@ -10,6 +17,16 @@ function addOption(option) {
 
 function removeOption(optionToRemove) {
     selectedOptions.splice(selectedOptions.indexOf(optionToRemove), 1);
+}
+
+function clearOptions(){
+    while (selectedOptions.length > 0) {
+        selectedOptions.pop();
+    }
+    for (let container of checkboxContainers) {
+        container.querySelector("input").checked = false;
+    }
+    updateInstruments();
 }
 
 function updateInstruments() {

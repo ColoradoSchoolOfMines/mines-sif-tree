@@ -12,37 +12,12 @@ function removeOption(optionToRemove) {
     selectedOptions.splice(selectedOptions.indexOf(optionToRemove), 1);
 }
 
-function updateOptionsList() {
-    const oldOptions = document.getElementById("selected-options");
-    const newOptions = document.createElement("div");
-    const optionsList = document.createElement("ul");
-    let options = []
-
-    for (i in selectedOptions) {
-        let listItem = document.createElement("li");
-        let optionText = document.createTextNode(selectedOptions[i]);
-        listItem.appendChild(optionText);
-        optionsList.append(listItem);
-        options.push(selectedOptions[i]);
-    }
-
-    newOptions.appendChild(optionsList);
-    newOptions.id = "selected-options"
-    console.log(newOptions);
-    console.log(oldOptions);
-
-    document.body.replaceChild(newOptions, oldOptions);
-    console.log("Updated");
-
-    updateInstruments(options)
-}
-
-function updateInstruments(options) {
+function updateInstruments() {
     let anySuccess = false;
     for (let name in data) {
         let match = true;
-        for (let i = 0; i < options.length; i++) {
-            if (!data[name][options[i]]) {
+        for (let i = 0; i < selectedOptions.length; i++) {
+            if (!data[name][selectedOptions[i]]) {
                 match = false;
                 break;
             }
@@ -55,7 +30,6 @@ function updateInstruments(options) {
             instrumentDiv.classList.add("greyed-out");
         }
     }
-    console.log(anySuccess)
     errorMsg.style.visibility = anySuccess ? 'hidden' : 'visible';
 }
 
@@ -87,7 +61,7 @@ for (let container of checkboxContainers) {
         } else {
             removeOption(checkbox.id);
         }
-        updateOptionsList();
+        updateInstruments();
     })
 }
 

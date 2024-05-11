@@ -4,7 +4,6 @@ const msg = document.getElementById("msg");
 
 const clearBtn = document.getElementById("clear-btn");
 clearBtn.addEventListener('click', () => {
-    console.log("cleared!")
     clearOptions();
 });
 
@@ -47,7 +46,7 @@ function updateInstruments() {
         }
     }
 
-    const defaultMessage = document.querySelector('#msg').textContent;
+    const defaultMessage = document.querySelector("#msg").textContent;
 
     msg.textContent = anySuccess ? defaultMessage 
                                  : 'No instruments match the selected criteria.';

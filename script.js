@@ -1,5 +1,6 @@
 const checkboxContainers = document.getElementsByClassName("checkbox-container");
 const instrumentsContainer = document.getElementById("instruments-panel");
+const defaultMessage = "Narrow down instruments by selecting from the criteria below. If criteria are inapplicable, please leave them unselected.";
 const msg = document.getElementById("msg");
 
 const clearBtn = document.getElementById("clear-btn");
@@ -45,8 +46,6 @@ function updateInstruments() {
             instrumentDiv.classList.add("greyed-out");
         }
     }
-
-    const defaultMessage = document.querySelector("#msg").textContent;
 
     msg.textContent = anySuccess ? defaultMessage 
                                  : 'No instruments match the selected criteria.';

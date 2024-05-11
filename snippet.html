@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Mines SIF Tree</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<script src="data.js" defer></script>
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<div id="flex-container">
+		<style>
+			/* general styles */
+			* {
+				font-family: "Open Sans", sans-serif;
+				font-optical-sizing: auto;
+				font-weight: 600;
+				font-style: normal;
+				font-variation-settings: "wdth" 100;
+			}
+			h1 {
+				margin: 20px 0 20px 0;
+			}   
+			/* flex container */
+			#flex-container {
+				margin: 2rem;
+				display: flex;
+				justify-content: center;
+			}
+			/* instruments panel */
+			#instruments-panel {
+				background-color: #CFDCE9;
+				padding: 0 1rem 1rem 1rem;
+				color: white;
+				width: 24rem;
+				height: auto;
+			}
+			#instruments-panel h1 {
+				color: #21314d;
+			}
+			.instrument {
+				background-color: #21314d;
+				margin: 1px;
+				height: auto;
+				padding: 3px 10px;
+			}
+			.greyed-out {
+				background-color: #a0a0a0;
+				pointer-events: none;
+				cursor: default;
+			}
+			a {
+				color: white;
+				text-decoration: none;
+			}
+			a:hover {
+				text-decoration: underline;
+			}
+			/* options panel*/
+			#options-panel {
+				color: #21314d;
+				width: 128rem;
+				margin-left: 2rem
+			}
+			.options-container {
+				display: flex;
+				justify-content: left;
+				flex-wrap: wrap;
+				gap: 4px;
+			}
+			.options-group {
+				width: 13rem;
+				background-color: #CFDCE9;
+				padding: 12px;
+			}
+
+			.options-group h3 {
+				margin: 0 0 10px 0;
+				font-size: 20px;
+				font-weight: 700;
+			}
+			/* custom checkboxes */
+			.checkbox-container {
+				font-size: 16px;
+				display: flex;
+				gap: 4px;
+			}
+			.checkbox-container span {
+				padding-top: 2px;
+				user-select: none;
+				-moz-user-select: none;
+				-webkit-text-select: none;
+				-webkit-user-select: none;
+			}
+			input[type="checkbox"] {
+				appearance: none;
+				background-color: #fff;
+				padding: 4px;
+				color: #21314d;
+				width: 20px;
+				height: 20px;
+				border: 2.5px solid #21314d;
+				border-radius: 2px;
+				cursor: pointer;
+			}
+			input[type="checkbox"]:hover {
+				background-color: #879EC3;
+			}
+			input[type="checkbox"]:checked {
+				background-color: #21314d;
+			}
+			button {
+				margin-top: 20px;
+				cursor: pointer;
+				border: 3px solid #21314d;
+				background-color: white;
+				color: #21314d;
+				padding: 8px;
+				font-size: medium;
+			}
+			button:hover {
+				background-color: #21314d;
+				color: white;
+				cursor: pointer;
+			}
+		</style>
+		<div id="instruments-panel">
+			<h1>INSTRUMENTS</h1>
+		</div>
+		<div id="options-panel">
+			<h1 id="options-header">OPTIONS</h1>
+			<p id="msg" disabled="true">
+				Narrow down instruments by selecting from the options below.
+			</p>
+			<div class="options-container">
+				<div class="options-group">
+					<h3>Phase</h3>
+					<div class="checkbox-container">
+						<input id="phase-solid" type="checkbox">
+						<span>Solid</span>
+					</div>
+					<div class="checkbox-container">
+						<input id="phase-liquid" type="checkbox">
+						<span>Liquid</span>
+					</div>
+				</div>
+				<div class="options-group">
+					<h3>Solid Form</h3>
+					<div class="checkbox-container">
+						<input id="solid_form-crystalline" type="checkbox">
+						<span>Crystalline</span>
+					</div>
+					<div class="checkbox-container">
+						<input id="solid_form-amorphous" type="checkbox">
+						<span>Amorphous</span>
+					</div>
+					<div class="checkbox-container">
+						<input id="solid_form-thin_film" type="checkbox">
+						<span>Thin Film</span>
+					</div>
+					<div class="checkbox-container">
+						<input id="solid_form-powder" type="checkbox">
+						<span>Powder</span>
+					</div>
+				</div>
+				<div class="options-group">
+					<h3>Solid Properties</h3>
+					<div class="checkbox-container">
+						<input id="solid_props-phase" type="checkbox">
+						<span>Phase</span>
+					</div>
+					<div class="checkbox-container">
+						<input id="solid_props-crystallographic-texture" type="checkbox">
+						<span>Crystallographic Texture</span>
+					</div>
+					<div class="checkbox-container">
+						<input id="solid_props-strain" type="checkbox">
+						<span>Strain</span>
+					</div>
+					<div class="checkbox-container">
+						<input id="solid_props-bonding" type="checkbox">
+						<span>Bonding</span>
+					</div>
+				</div>
+				<div class="options-group">
+					<h3>Spatial Resolution</h3>
+					<div class="checkbox-container">
+						<input id="spatial_res-na" type="checkbox">
+						<span>N/A</span>
+					</div>
+					<div class="checkbox-container">
+						<input id="spatial_res-mm" type="checkbox">
+						<span>mm</span>
+					</div>
+					<div class="checkbox-container">
+						<input id="spatial_res-um" type="checkbox">
+						<span>&mu;m</span>
+					</div>
+					<div class="checkbox-container">
+						<input id="spatial_res-nm" type="checkbox">
+						<span>nm</span>
+					</div>
+				</div>
+				<div class="options-group">
+					<h3>Dimensionality</h3>
+					<div class="checkbox-container">
+						<input id="dimensionality-1d" type="checkbox">
+						<span>1D</span>
+					</div>
+					<div class="checkbox-container">
+						<input id="dimensionality-2d" type="checkbox">
+						<span>2D</span>
+					</div>
+					<div class="checkbox-container">
+						<input id="dimensionality-3d" type="checkbox">
+						<span>3D</span>
+					</div>
+				</div>
+				<div class="options-group">
+					<h3>Compositional Sensitivity</h3>
+					<div class="checkbox-container">
+						<input id="comp_sensitivity-na" type="checkbox">
+						<span>N/A</span>
+					</div>
+					<div class="checkbox-container">
+						<input id="comp_sensitivity-a_few_at_%" type="checkbox">
+						<span>A Few At %</span>
+					</div>
+					<div class="checkbox-container">
+						<input id="comp_sensitivity-ppm" type="checkbox">
+						<span>PPM</span>
+					</div>
+				</div>
+				<div class="options-group">
+					<h3>Temperature</h3>
+					<div class="checkbox-container">
+						<input id="temp-room" type="checkbox">
+						<span>Room Temp</span>
+					</div>
+					<div class="checkbox-container">
+						<input id="temp-heated" type="checkbox">
+						<span>Heated</span>
+					</div>
+					<div class="checkbox-container">
+						<input id="temp-cooled" type="checkbox">
+						<span>Cooled</span>
+					</div>
+				</div>
+				<div class="options-group">
+					<h3>Mechanical Loading</h3>
+					<div class="checkbox-container">
+						<input id="mech_loading-na" type="checkbox">
+						<span>N/A</span>
+					</div>
+					<div class="checkbox-container">
+						<input id="mech_loading-tension" type="checkbox">
+						<span>Tension</span>
+					</div>
+					<div class="checkbox-container">
+						<input id="mech_loading-compression" type="checkbox">
+						<span>Compression</span>
+					</div>
+					<div class="checkbox-container">
+						<input id="mech_loading-bending" type="checkbox">
+						<span>Bending</span>
+					</div>
+					<div class="checkbox-container">
+						<input id="mech_loading-fatigue" type="checkbox">
+						<span>Fatigue</span>
+					</div>
+				</div>
+				<div class="options-group">
+					<h3>Force Ranges</h3>
+					<div class="checkbox-container">
+						<input id="force_ranges-nn" type="checkbox">
+						<span>nN</span>
+					</div>
+					<div class="checkbox-container">
+						<input id="force_ranges-n" type="checkbox">
+						<span>N</span>
+					</div>
+					<div class="checkbox-container">
+						<input id="force_ranges-nk" type="checkbox">
+						<span>kN</span>
+					</div>
+				</div>
+				<div class="options-group">
+					<h3>Atmosphere</h3>
+					<div class="checkbox-container">
+						<input id="atmosphere-ambient" type="checkbox">
+						<span>Ambient</span>
+					</div>
+					<div class="checkbox-container">
+						<input id="atmosphere-vacuum" type="checkbox">
+						<span>Vacuum</span>
+					</div>
+					<div class="checkbox-container">
+						<input id="atmosphere-other" type="checkbox">
+						<span>Other</span>
+					</div>
+				</div>
+			</div>
+			<button id="clear-btn">Clear Selected Options</button>
+		</div>
+		<script>
+			const data = {
+				"Helios": {
+					"link": "https://www.mines.edu/shared-facilities/project/fei-helios-nanolab-600i-fib-sem/",
+					"phase-solid": true,
+					"phase-liquid": false,
+					"solid_form-crystalline": true,
+					"solid_form-amorphous": true,
+					"solid_form-thin_film": true,
+					"solid_form-powder": true,
+					"solid_props-phase": true,
+					"solid_props-crystallorgraphic-texture": true,
+					"solid_props-strain": false,
+					"solid_props-bonding": false,
+					"spatial_res-na": true,
+					"spatial_res-mm": true,
+					"spatial_res-um": true,
+					"spatial_res-nm": true,
+					"dimensionality-1d": true,
+					"dimensionality-2d": true,
+					"dimensionality-3d": true,
+					"comp_sensitivity-na": true,
+					"comp_sensitivity-a_few_at_%": true,
+					"comp_sensitivity-ppm": false,
+					"temp-room": true,
+					"temp-heated": false,
+					"temp-cooled": false,
+					"mech_loading-na": true,
+					"mech_loading-tension": false,
+					"mech_loading-compression": false,
+					"mech_loading-bending": false,
+					"mech_loading-fatigue": false,
+					"atmosphere-ambient": false,
+					"atmosphere-vacuum": true,
+					"atmosphere-other": false,
+				},
+				"Tescan": {
+					"link": "https://www.mines.edu/shared-facilities/project/tescan-s8252g-raman-sem-fib/",
+					"phase-solid": true,
+					"phase-liquid": false,
+					"solid_form-crystalline": true,
+					"solid_form-amorphous": true,
+					"solid_form-thin_film": true,
+					"solid_form-powder": true,
+					"solid_props-phase": true,
+					"solid_props-crystallorgraphic-texture": true,
+					"solid_props-strain": false,
+					"solid_props-bonding": true,
+					"spatial_res-na": true,
+					"spatial_res-mm": true,
+					"spatial_res-um": true,
+					"spatial_res-nm": true,
+					"dimensionality-1d": true,
+					"dimensionality-2d": true,
+					"dimensionality-3d": true,
+					"comp_sensitivity-na": true,
+					"comp_sensitivity-a_few_at_%": true,
+					"comp_sensitivity-ppm": false,
+					"temp-room": true,
+					"temp-heated": true,
+					"temp-cooled": false,
+					"mech_loading-na": true,
+					"mech_loading-tension": true,
+					"mech_loading-compression": true,
+					"mech_loading-bending": false,
+					"mech_loading-fatigue": false,
+					"atmosphere-ambient": false,
+					"atmosphere-vacuum": true,
+					"atmosphere-other": true,
+				},
+				"JEOL": {
+					"link": "https://www.mines.edu/shared-facilities/project/jeol-jsf-7000f-field-emission-sem/",
+					"phase-solid": true,
+					"phase-liquid": false,
+					"solid_form-crystalline": true,
+					"solid_form-amorphous": true,
+					"solid_form-thin_film": true,
+					"solid_form-powder": true,
+					"solid_props-phase": true,
+					"solid_props-crystallorgraphic-texture": true,
+					"solid_props-strain": false,
+					"solid_props-bonding": false,
+					"spatial_res-na": true,
+					"spatial_res-mm": true,
+					"spatial_res-um": true,
+					"spatial_res-nm": true,
+					"dimensionality-1d": true,
+					"dimensionality-2d": true,
+					"dimensionality-3d": false,
+					"comp_sensitivity-na": true,
+					"comp_sensitivity-a_few_at_%": true,
+					"comp_sensitivity-ppm": false,
+					"temp-room": true,
+					"temp-heated": false,
+					"temp-cooled": false,
+					"mech_loading-na": true,
+					"mech_loading-tension": false,
+					"mech_loading-compression": false,
+					"mech_loading-bending": false,
+					"mech_loading-fatigue": false,
+					"atmosphere-ambient": false,
+					"atmosphere-vacuum": true,
+					"atmosphere-other": false,
+				},
+				"Quanta": {
+					"link": "https://www.mines.edu/shared-facilities/project/fei-quanta-600i-environmental-sem/",
+					"phase-solid": true,
+					"phase-liquid": false,
+					"solid_form-crystalline": true,
+					"solid_form-amorphous": true,
+					"solid_form-thin_film": true,
+					"solid_form-powder": true,
+					"solid_props-phase": false,
+					"solid_props-crystallorgraphic-texture": false,
+					"solid_props-strain": false,
+					"solid_props-bonding": false,
+					"spatial_res-na": true,
+					"spatial_res-mm": true,
+					"spatial_res-um": true,
+					"spatial_res-nm":   false,
+					"dimensionality-1d": true,
+					"dimensionality-2d": true,
+					"dimensionality-3d": false,
+					"comp_sensitivity-na": true,
+					"comp_sensitivity-a_few_at_%": true,
+					"comp_sensitivity-ppm": false,
+					"temp-room": true,
+					"temp-heated": false,
+					"temp-cooled": false,
+					"mech_loading-na": true,
+					"mech_loading-tension": false,
+					"mech_loading-compression": false,
+					"mech_loading-bending": false,
+					"mech_loading-fatigue": false,
+					"atmosphere-ambient": false,
+					"atmosphere-vacuum": true,
+					"atmosphere-other": true,
+				},
+				"Phenom": {
+					"link": "https://www.mines.edu/shared-facilities/project/phenom/",
+					"phase-solid": true,
+					"phase-liquid": false,
+					"solid_form-crystalline": true,
+					"solid_form-amorphous": true,
+					"solid_form-thin_film": true,
+					"solid_form-powder": true,
+					"solid_props-phase": false,
+					"solid_props-crystallorgraphic-texture": false,
+					"solid_props-strain": false,
+					"solid_props-bonding": false,
+					"spatial_res-na": true,
+					"spatial_res-mm": true,
+					"spatial_res-um": true,
+					"spatial_res-nm":   false,
+					"dimensionality-1d": true,
+					"dimensionality-2d": true,
+					"dimensionality-3d": false,
+					"comp_sensitivity-na": true,
+					"comp_sensitivity-a_few_at_%": false,
+					"comp_sensitivity-ppm": false,
+					"temp-room": true,
+					"temp-heated": false,
+					"temp-cooled": false,
+					"mech_loading-na": true,
+					"mech_loading-tension": false,
+					"mech_loading-compression": false,
+					"mech_loading-bending": false,
+					"mech_loading-fatigue": false,
+					"atmosphere-ambient": false,
+					"atmosphere-vacuum": true,
+					"atmosphere-other": true,
+				},
+				"TOF-SIMS": {
+					"link": "https://www.mines.edu/shared-facilities/project/iontof-tof-sims-v/",
+					"phase-solid": true,
+					"phase-liquid": false,
+					"solid_form-crystalline": true,
+					"solid_form-amorphous": true,
+					"solid_form-thin_film": true,
+					"solid_form-powder": true,
+					"solid_props-phase": false,
+					"solid_props-crystallorgraphic-texture": false,
+					"solid_props-strain": false,
+					"solid_props-bonding": false,
+					"spatial_res-na": true,
+					"spatial_res-mm": true,
+					"spatial_res-um": true,
+					"spatial_res-nm": true,
+					"dimensionality-1d": true,
+					"dimensionality-2d": true,
+					"dimensionality-3d": true,
+					"comp_sensitivity-na": true,
+					"comp_sensitivity-a_few_at_%": true,
+					"comp_sensitivity-ppm": true,
+					"temp-room": true,
+					"temp-heated": false,
+					"temp-cooled": false,
+					"mech_loading-na": true,
+					"mech_loading-tension": false,
+					"mech_loading-compression": false,
+					"mech_loading-bending": false,
+					"mech_loading-fatigue": false,
+					"atmosphere-ambient": false,
+					"atmosphere-vacuum": true,
+					"atmosphere-other": true,
+				},
+				"LEAP": {
+					"link": "https://www.mines.edu/shared-facilities/project/atomprobe/",
+					"phase-solid": true,
+					"phase-liquid": false,
+					"solid_form-crystalline": true,
+					"solid_form-amorphous": true,
+					"solid_form-thin_film": true,
+					"solid_form-powder": true,
+					"solid_props-phase": false,
+					"solid_props-crystallorgraphic-texture": false,
+					"solid_props-strain": false,
+					"solid_props-bonding": false,
+					"spatial_res-na": true,
+					"spatial_res-mm":   false,
+					"spatial_res-um": true,
+					"spatial_res-nm": true,
+					"dimensionality-1d": true,
+					"dimensionality-2d": true,
+					"dimensionality-3d": true,
+					"comp_sensitivity-na": true,
+					"comp_sensitivity-a_few_at_%": true,
+					"comp_sensitivity-ppm": true,
+					"temp-room": true,
+					"temp-heated": false,
+					"temp-cooled": true,
+					"mech_loading-na": true,
+					"mech_loading-tension": false,
+					"mech_loading-compression": false,
+					"mech_loading-bending": false,
+					"mech_loading-fatigue": false,
+					"atmosphere-ambient": false,
+					"atmosphere-vacuum": true,
+					"atmosphere-other": true,
+				},
+				"SCIEX 5500": {
+					"link": "https://www.mines.edu/shared-facilities/project/sciex-5500-triple-quad/",
+					"phase-solid": false,
+					"phase-liquid": true,
+					"solid_form-crystalline": false,
+					"solid_form-amorphous": false,
+					"solid_form-thin_film": false,
+					"solid_form-powder": false,
+					"solid_props-phase": false,
+					"solid_props-crystallorgraphic-texture": false,
+					"solid_props-strain": false,
+					"solid_props-bonding": false,
+					"spatial_res-na": true,
+					"spatial_res-mm":   false,
+					"spatial_res-um":   false,
+					"spatial_res-nm":   false,
+					"dimensionality-1d": false,
+					"dimensionality-2d": false,
+					"dimensionality-3d": false,
+					"comp_sensitivity-na": true,
+					"comp_sensitivity-a_few_at_%": true,
+					"comp_sensitivity-ppm": true,
+					"temp-room": true,
+					"temp-heated": false,
+					"temp-cooled": false,
+					"mech_loading-na": true,
+					"mech_loading-tension": false,
+					"mech_loading-compression": false,
+					"mech_loading-bending": false,
+					"mech_loading-fatigue": false,
+					"atmosphere-ambient": true,
+					"atmosphere-vacuum": false,
+					"atmosphere-other": false,
+				},
+				"SCIEX X500R": {
+					"link": "https://www.mines.edu/shared-facilities/project/sciex-x500r-qtof/",
+					"phase-solid": false,
+					"phase-liquid": true,
+					"solid_form-crystalline": false,
+					"solid_form-amorphous": false,
+					"solid_form-thin_film": false,
+					"solid_form-powder": false,
+					"solid_props-phase": false,
+					"solid_props-crystallorgraphic-texture": false,
+					"solid_props-strain": false,
+					"solid_props-bonding": false,
+					"spatial_res-na": true,
+					"spatial_res-mm":   false,
+					"spatial_res-um":   false,
+					"spatial_res-nm":   false,
+					"dimensionality-1d": false,
+					"dimensionality-2d": false,
+					"dimensionality-3d": false,
+					"comp_sensitivity-na": true,
+					"comp_sensitivity-a_few_at_%": true,
+					"comp_sensitivity-ppm": true,
+					"temp-room": true,
+					"temp-heated": false,
+					"temp-cooled": false,
+					"mech_loading-na": true,
+					"mech_loading-tension": false,
+					"mech_loading-compression": false,
+					"mech_loading-bending": false,
+					"mech_loading-fatigue": false,
+					"atmosphere-ambient": true,
+					"atmosphere-vacuum": false,
+					"atmosphere-other": false,
+				},
+				"OrbiTrap Exploris": {
+					"link": "https://www.mines.edu/shared-facilities/project/orbitrap/",
+					"phase-solid": false,
+					"phase-liquid": true,
+					"solid_form-crystalline": false,
+					"solid_form-amorphous": false,
+					"solid_form-thin_film": false,
+					"solid_form-powder": false,
+					"solid_props-phase": false,
+					"solid_props-crystallorgraphic-texture": false,
+					"solid_props-strain": false,
+					"solid_props-bonding": false,
+					"spatial_res-na": true,
+					"spatial_res-mm":   false,
+					"spatial_res-um":   false,
+					"spatial_res-nm":   false,
+					"dimensionality-1d": false,
+					"dimensionality-2d": false,
+					"dimensionality-3d": false,
+					"comp_sensitivity-na": true,
+					"comp_sensitivity-a_few_at_%": true,
+					"comp_sensitivity-ppm": true,
+					"temp-room": true,
+					"temp-heated": false,
+					"temp-cooled": false,
+					"mech_loading-na": true,
+					"mech_loading-tension": false,
+					"mech_loading-compression": false,
+					"mech_loading-bending": false,
+					"mech_loading-fatigue": false,
+					"atmosphere-ambient": true,
+					"atmosphere-vacuum": false,
+					"atmosphere-other": false,
+				},
+				"FTIR": {
+					"link": "https://www.mines.edu/shared-facilities/project/ftir/",
+					"phase-solid": true,
+					"phase-liquid": true,
+					"solid_form-crystalline": true,
+					"solid_form-amorphous": true,
+					"solid_form-thin_film": true,
+					"solid_form-powder": true,
+					"solid_props-phase": false,
+					"solid_props-crystallorgraphic-texture": false,
+					"solid_props-strain": false,
+					"solid_props-bonding": true,
+					"spatial_res-na": true,
+					"spatial_res-mm": true,
+					"spatial_res-um":   false,
+					"spatial_res-nm":   false,
+					"dimensionality-1d": true,
+					"dimensionality-2d": false,
+					"dimensionality-3d": false,
+					"comp_sensitivity-na": true,
+					"comp_sensitivity-a_few_at_%": true,
+					"comp_sensitivity-ppm": false,
+					"temp-room": true,
+					"temp-heated": false,
+					"temp-cooled": false,
+					"mech_loading-na": true,
+					"mech_loading-tension": false,
+					"mech_loading-compression": false,
+					"mech_loading-bending": false,
+					"mech_loading-fatigue": false,
+					"atmosphere-ambient": true,
+					"atmosphere-vacuum": false,
+					"atmosphere-other": false,
+				},
+				"UV-Vis": {
+					"link": "https://www.mines.edu/shared-facilities/project/uvis/",
+					"phase-solid": true,
+					"phase-liquid": false,
+					"solid_form-crystalline": true,
+					"solid_form-amorphous": true,
+					"solid_form-thin_film": true,
+					"solid_form-powder": true,
+					"solid_props-phase": false,
+					"solid_props-crystallorgraphic-texture": false,
+					"solid_props-strain": false,
+					"solid_props-bonding": true,
+					"spatial_res-na": true,
+					"spatial_res-mm": true,
+					"spatial_res-um":   false,
+					"spatial_res-nm":   false,
+					"dimensionality-1d": true,
+					"dimensionality-2d": false,
+					"dimensionality-3d": false,
+					"comp_sensitivity-na": true,
+					"comp_sensitivity-a_few_at_%": false,
+					"comp_sensitivity-ppm": false,
+					"temp-room": true,
+					"temp-heated": false,
+					"temp-cooled": false,
+					"mech_loading-na": true,
+					"mech_loading-tension": false,
+					"mech_loading-compression": false,
+					"mech_loading-bending": false,
+					"mech_loading-fatigue": false,
+					"atmosphere-ambient": true,
+					"atmosphere-vacuum": false,
+					"atmosphere-other": false,
+				},
+				"Ellipsometer": {
+					"link": "https://www.mines.edu/shared-facilities/project/m2000/",
+					"phase-solid": true,
+					"phase-liquid": false,
+					"solid_form-crystalline": true,
+					"solid_form-amorphous": true,
+					"solid_form-thin_film": true,
+					"solid_form-powder": false,
+					"solid_props-phase": true,
+					"solid_props-crystallorgraphic-texture": false,
+					"solid_props-strain": true,
+					"solid_props-bonding": false,
+					"spatial_res-na": true,
+					"spatial_res-mm": true,
+					"spatial_res-um":   false,
+					"spatial_res-nm":   false,
+					"dimensionality-1d": true,
+					"dimensionality-2d": false,
+					"dimensionality-3d": false,
+					"comp_sensitivity-na": true,
+					"comp_sensitivity-a_few_at_%": false,
+					"comp_sensitivity-ppm": false,
+					"temp-room": true,
+					"temp-heated": false,
+					"temp-cooled": false,
+					"mech_loading-na": true,
+					"mech_loading-tension": false,
+					"mech_loading-compression": false,
+					"mech_loading-bending": false,
+					"mech_loading-fatigue": false,
+					"atmosphere-ambient": true,
+					"atmosphere-vacuum": false,
+					"atmosphere-other": false,
+				},
+				"SPM": {
+					"link": "",  // TODO: get this link!!! <==========================================
+					"phase-solid": true,
+					"phase-liquid": true,
+					"solid_form-crystalline": true,
+					"solid_form-amorphous": true,
+					"solid_form-thin_film": true,
+					"solid_form-powder": true,
+					"solid_props-phase": true,
+					"solid_props-crystallorgraphic-texture": false,
+					"solid_props-strain": true,
+					"solid_props-bonding": false,
+					"spatial_res-na": true,
+					"spatial_res-mm":   false,
+					"spatial_res-um": true,
+					"spatial_res-nm": true,
+					"dimensionality-1d": true,
+					"dimensionality-2d": true,
+					"dimensionality-3d": false,
+					"comp_sensitivity-na": true,
+					"comp_sensitivity-a_few_at_%": false,
+					"comp_sensitivity-ppm": false,
+					"temp-room": true,
+					"temp-heated": true,
+					"temp-cooled": true,
+					"mech_loading-na": true,
+					"mech_loading-tension": true,
+					"mech_loading-compression": true,
+					"mech_loading-bending": false,
+					"mech_loading-fatigue": false,
+					"atmosphere-ambient": true,
+					"atmosphere-vacuum": false,
+					"atmosphere-other": true,
+				},
+				"AFM": {
+					"link": "https://www.mines.edu/shared-facilities/project/digitalafm/",
+					"phase-solid": true,
+					"phase-liquid": false,
+					"solid_form-crystalline": true,
+					"solid_form-amorphous": true,
+					"solid_form-thin_film": true,
+					"solid_form-powder": true,
+					"solid_props-phase": true,
+					"solid_props-crystallorgraphic-texture": false,
+					"solid_props-strain": true,
+					"solid_props-bonding": false,
+					"spatial_res-na": true,
+					"spatial_res-mm":   false,
+					"spatial_res-um": true,
+					"spatial_res-nm": true,
+					"dimensionality-1d": true,
+					"dimensionality-2d": true,
+					"dimensionality-3d": false,
+					"comp_sensitivity-na": true,
+					"comp_sensitivity-a_few_at_%": false,
+					"comp_sensitivity-ppm": false,
+					"temp-room": true,
+					"temp-heated": false,
+					"temp-cooled": false,
+					"mech_loading-na": true,
+					"mech_loading-tension": false,
+					"mech_loading-compression": false,
+					"mech_loading-bending": false,
+					"mech_loading-fatigue": false,
+					"atmosphere-ambient": true,
+					"atmosphere-vacuum": false,
+					"atmosphere-other": false,
+				},
+				"Profilometer": {
+					"link": "https://www.mines.edu/shared-facilities/project/profilometer/",
+					"phase-solid": true,
+					"phase-liquid": false,
+					"solid_form-crystalline": true,
+					"solid_form-amorphous": true,
+					"solid_form-thin_film": true,
+					"solid_form-powder": true,
+					"solid_props-phase": false,
+					"solid_props-crystallorgraphic-texture": false,
+					"solid_props-strain": false,
+					"solid_props-bonding": false,
+					"spatial_res-na": true,
+					"spatial_res-mm": true,
+					"spatial_res-um": true,
+					"spatial_res-nm":   false,
+					"dimensionality-1d": true,
+					"dimensionality-2d": true,
+					"dimensionality-3d": false,
+					"comp_sensitivity-na": true,
+					"comp_sensitivity-a_few_at_%": false,
+					"comp_sensitivity-ppm": false,
+					"temp-room": true,
+					"temp-heated": false,
+					"temp-cooled": false,
+					"mech_loading-na": true,
+					"mech_loading-tension": false,
+					"mech_loading-compression": false,
+					"mech_loading-bending": false,
+					"mech_loading-fatigue": false,
+					"atmosphere-ambient": true,
+					"atmosphere-vacuum": false,
+					"atmosphere-other": false,
+				},
+				"Keyence": {
+					"link": "https://www.mines.edu/shared-facilities/project/keyence/",
+					"phase-solid": true,
+					"phase-liquid": true,
+					"solid_form-crystalline": true,
+					"solid_form-amorphous": true,
+					"solid_form-thin_film": true,
+					"solid_form-powder": true,
+					"solid_props-phase": false,
+					"solid_props-crystallorgraphic-texture": false,
+					"solid_props-strain": false,
+					"solid_props-bonding": false,
+					"spatial_res-na": true,
+					"spatial_res-mm": true,
+					"spatial_res-um": true,
+					"spatial_res-nm":   false,
+					"dimensionality-1d": true,
+					"dimensionality-2d": true,
+					"dimensionality-3d": true,
+					"comp_sensitivity-na": true,
+					"comp_sensitivity-a_few_at_%": false,
+					"comp_sensitivity-ppm": false,
+					"temp-room": true,
+					"temp-heated": false,
+					"temp-cooled": false,
+					"mech_loading-na": true,
+					"mech_loading-tension": false,
+					"mech_loading-compression": false,
+					"mech_loading-bending": false,
+					"mech_loading-fatigue": false,
+					"atmosphere-ambient": true,
+					"atmosphere-vacuum": false,
+					"atmosphere-other": false,
+				},
+				"WITec Confocal": {
+					"link": "https://www.mines.edu/shared-facilities/project/witec-laser-confocal-raman-microscope/",
+					"phase-solid": true,
+					"phase-liquid": true,
+					"solid_form-crystalline": true,
+					"solid_form-amorphous": true,
+					"solid_form-thin_film": true,
+					"solid_form-powder": true,
+					"solid_props-phase": false,
+					"solid_props-crystallorgraphic-texture": false,
+					"solid_props-strain": true,
+					"solid_props-bonding": true,
+					"spatial_res-na": true,
+					"spatial_res-mm": true,
+					"spatial_res-um": true,
+					"spatial_res-nm":   false,
+					"dimensionality-1d": true,
+					"dimensionality-2d": true,
+					"dimensionality-3d": true,
+					"comp_sensitivity-na": true,
+					"comp_sensitivity-a_few_at_%": false,
+					"comp_sensitivity-ppm": false,
+					"temp-room": true,
+					"temp-heated": false,
+					"temp-cooled": false,
+					"mech_loading-na": true,
+					"mech_loading-tension": false,
+					"mech_loading-compression": false,
+					"mech_loading-bending": false,
+					"mech_loading-fatigue": false,
+					"atmosphere-ambient": true,
+					"atmosphere-vacuum": false,
+					"atmosphere-other": false,
+				},
+				"DR-6000 Hach": {
+					"link": "https://www.mines.edu/shared-facilities/project/wqa/",
+					"phase-solid": false,
+					"phase-liquid": true,
+					"solid_form-crystalline": false,
+					"solid_form-amorphous": false,
+					"solid_form-thin_film": false,
+					"solid_form-powder": false,
+					"solid_props-phase": false,
+					"solid_props-crystallorgraphic-texture": false,
+					"solid_props-strain": false,
+					"solid_props-bonding": false,
+					"spatial_res-na": true,
+					"spatial_res-mm":   false,
+					"spatial_res-um":   false,
+					"spatial_res-nm":   false,
+					"dimensionality-1d": false,
+					"dimensionality-2d": false,
+					"dimensionality-3d": false,
+					"comp_sensitivity-na": true,
+					"comp_sensitivity-a_few_at_%": true,
+					"comp_sensitivity-ppm": true,
+					"temp-room": true,
+					"temp-heated": false,
+					"temp-cooled": false,
+					"mech_loading-na": true,
+					"mech_loading-tension": false,
+					"mech_loading-compression": false,
+					"mech_loading-bending": false,
+					"mech_loading-fatigue": false,
+					"atmosphere-ambient": true,
+					"atmosphere-vacuum": false,
+					"atmosphere-other": false,
+				},
+				"Shimadzu TOC-L": {
+					"link": "https://www.mines.edu/shared-facilities/project/toc/",
+					"phase-solid": false,
+					"phase-liquid": true,
+					"solid_form-crystalline": false,
+					"solid_form-amorphous": false,
+					"solid_form-thin_film": false,
+					"solid_form-powder": false,
+					"solid_props-phase": false,
+					"solid_props-crystallorgraphic-texture": false,
+					"solid_props-strain": false,
+					"solid_props-bonding": false,
+					"spatial_res-na": true,
+					"spatial_res-mm":   false,
+					"spatial_res-um":   false,
+					"spatial_res-nm":   false,
+					"dimensionality-1d": false,
+					"dimensionality-2d": false,
+					"dimensionality-3d": false,
+					"comp_sensitivity-na": true,
+					"comp_sensitivity-a_few_at_%": true,
+					"comp_sensitivity-ppm": true,
+					"temp-room": true,
+					"temp-heated": false,
+					"temp-cooled": false,
+					"mech_loading-na": true,
+					"mech_loading-tension": false,
+					"mech_loading-compression": false,
+					"mech_loading-bending": false,
+					"mech_loading-fatigue": false,
+					"atmosphere-ambient": true,
+					"atmosphere-vacuum": false,
+					"atmosphere-other": false,
+				},
+				"Thermo Dionex ICS-900": {
+					"link": "https://www.mines.edu/shared-facilities/project/ic/",
+					"phase-solid": false,
+					"phase-liquid": true,
+					"solid_form-crystalline": false,
+					"solid_form-amorphous": false,
+					"solid_form-thin_film": false,
+					"solid_form-powder": false,
+					"solid_props-phase": false,
+					"solid_props-crystallorgraphic-texture": false,
+					"solid_props-strain": false,
+					"solid_props-bonding": false,
+					"spatial_res-na": true,
+					"spatial_res-mm":   false,
+					"spatial_res-um":   false,
+					"spatial_res-nm":   false,
+					"dimensionality-1d": false,
+					"dimensionality-2d": false,
+					"dimensionality-3d": false,
+					"comp_sensitivity-na": true,
+					"comp_sensitivity-a_few_at_%": true,
+					"comp_sensitivity-ppm": true,
+					"temp-room": true,
+					"temp-heated": false,
+					"temp-cooled": false,
+					"mech_loading-na": true,
+					"mech_loading-tension": false,
+					"mech_loading-compression": false,
+					"mech_loading-bending": false,
+					"mech_loading-fatigue": false,
+					"atmosphere-ambient": true,
+					"atmosphere-vacuum": false,
+					"atmosphere-other": false,
+				},
+				"Panalytical Empyrean": {
+					"link": "https://www.mines.edu/shared-facilities/project/malvern-panalytical-empyrean-x-ray-diffractometer/",
+					"phase-solid": true,
+					"phase-liquid": false,
+					"solid_form-crystalline": true,
+					"solid_form-amorphous": true,
+					"solid_form-thin_film": true,
+					"solid_form-powder": true,
+					"solid_props-phase": true,
+					"solid_props-crystallorgraphic-texture": true,
+					"solid_props-strain": true,
+					"solid_props-bonding": false,
+					"spatial_res-na": true,
+					"spatial_res-mm": true,
+					"spatial_res-um":   false,
+					"spatial_res-nm":   false,
+					"dimensionality-1d": true,
+					"dimensionality-2d": true,
+					"dimensionality-3d": false,
+					"comp_sensitivity-na": true,
+					"comp_sensitivity-a_few_at_%": false,
+					"comp_sensitivity-ppm": false,
+					"temp-room": true,
+					"temp-heated": true,
+					"temp-cooled": true,
+					"mech_loading-na": true,
+					"mech_loading-tension": false,
+					"mech_loading-compression": false,
+					"mech_loading-bending": false,
+					"mech_loading-fatigue": false,
+					"atmosphere-ambient": true,
+					"atmosphere-vacuum": false,
+					"atmosphere-other": true,
+				},
+				"Panalytical X'Pert Pro": {
+					"link": "https://www.mines.edu/shared-facilities/project/panalytical-pw3040-x-ray-diffractometer/",
+					"phase-solid": true,
+					"phase-liquid": false,
+					"solid_form-crystalline": true,
+					"solid_form-amorphous": true,
+					"solid_form-thin_film": true,
+					"solid_form-powder": true,
+					"solid_props-phase": true,
+					"solid_props-crystallorgraphic-texture": true,
+					"solid_props-strain": false,
+					"solid_props-bonding": false,
+					"spatial_res-na": true,
+					"spatial_res-mm": true,
+					"spatial_res-um":   false,
+					"spatial_res-nm":   false,
+					"dimensionality-1d": true,
+					"dimensionality-2d": false,
+					"dimensionality-3d": false,
+					"comp_sensitivity-na": true,
+					"comp_sensitivity-a_few_at_%": false,
+					"comp_sensitivity-ppm": false,
+					"temp-room": true,
+					"temp-heated": false,
+					"temp-cooled": false,
+					"mech_loading-na": true,
+					"mech_loading-tension": false,
+					"mech_loading-compression": false,
+					"mech_loading-bending": false,
+					"mech_loading-fatigue": false,
+					"atmosphere-ambient": true,
+					"atmosphere-vacuum": false,
+					"atmosphere-other": false,
+				},
+				"Zeiss Versa XCT": {
+					"link": "https://www.mines.edu/shared-facilities/project/zeiss-versa-x-ray-microscope/",
+					"phase-solid": true,
+					"phase-liquid": false,
+					"solid_form-crystalline": true,
+					"solid_form-amorphous": true,
+					"solid_form-thin_film": false,
+					"solid_form-powder": false,
+					"solid_props-phase": true,
+					"solid_props-crystallorgraphic-texture": false,
+					"solid_props-strain": false,
+					"solid_props-bonding": false,
+					"spatial_res-na": true,
+					"spatial_res-mm": true,
+					"spatial_res-um": true,
+					"spatial_res-nm":   false,
+					"dimensionality-1d": true,
+					"dimensionality-2d": true,
+					"dimensionality-3d": true,
+					"comp_sensitivity-na": true,
+					"comp_sensitivity-a_few_at_%": false,
+					"comp_sensitivity-ppm": false,
+					"temp-room": true,
+					"temp-heated": false,
+					"temp-cooled": false,
+					"mech_loading-na": true,
+					"mech_loading-tension": true,
+					"mech_loading-compression": true,
+					"mech_loading-bending": false,
+					"mech_loading-fatigue": false,
+					"atmosphere-ambient": true,
+					"atmosphere-vacuum": false,
+					"atmosphere-other": false,
+				},
+			}
+			const checkboxContainers = document.getElementsByClassName("checkbox-container");
+			const instrumentsContainer = document.getElementById("instruments-panel");
+			const msg = document.getElementById("msg");
+			const clearBtn = document.getElementById("clear-btn");
+			clearBtn.addEventListener('click', () => {
+				console.log("cleared!")
+				clearOptions();
+			});
+			let selectedOptions = [];
+			function addOption(option) {
+				selectedOptions.push(option);
+			}
+			function removeOption(optionToRemove) {
+				selectedOptions.splice(selectedOptions.indexOf(optionToRemove), 1);
+			}
+			function clearOptions(){
+				while (selectedOptions.length > 0) {
+					selectedOptions.pop();
+				}
+				for (let container of checkboxContainers) {
+					container.querySelector("input").checked = false;
+				}
+				updateInstruments();
+			}
+			function updateInstruments() {
+				let anySuccess = false;
+				for (let name in data) {
+					let match = true;
+					for (let i = 0; i < selectedOptions.length; i++) {
+						if (!data[name][selectedOptions[i]]) {
+							match = false;
+							break;
+						}
+					}
+					let instrumentDiv = document.getElementById(name);
+					if (match) {
+						instrumentDiv.classList.remove("greyed-out");
+						anySuccess = true;
+					} else {
+						instrumentDiv.classList.add("greyed-out");
+					}
+				}
+				msg.textContent = anySuccess ? 'Narrow down instruments by selecting from the options below.' 
+											: 'No instruments match the selected options.';
+				msg.style.color = anySuccess ? "#21314d" : 'red';
+			}
+			// create all instruments in instrument panel
+			for (let name in data) {
+				// create new div
+				let div = document.createElement('div');
+				div.id = name;
+				div.className = "instrument";
+				// create div contents
+				let a = document.createElement('a');
+				a.appendChild(document.createTextNode(name));
+				a.setAttribute('href', data[name].link);
+				if (data[name].link !== "") {
+					a.setAttribute('target', "_blank");
+				}
+				div.appendChild(a);
+				// add to instruments panel
+				instrumentsContainer.appendChild(div);
+			}
+			for (let container of checkboxContainers) {
+				let checkbox = container.querySelector("input");
+				checkbox.addEventListener('click', () => {
+					if (checkbox.checked) {
+						addOption(checkbox.id);
+					} else {
+						removeOption(checkbox.id);
+					}
+					updateInstruments();
+				})
+			}
+		</script>
+	</div>
+</body>
+</html>

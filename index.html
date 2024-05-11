@@ -105,10 +105,6 @@
                 <div class="options-group">
                     <h3>Compositional Sensitivity</h3>
                     <div class="checkbox-container">
-                        <input id="comp_sensitivity-na" type="checkbox">
-                        <span>N/A</span>
-                    </div>
-                    <div class="checkbox-container">
                         <input id="comp_sensitivity-a_few_at_%" type="checkbox">
                         <span>A Few At %</span>
                     </div>
@@ -135,10 +131,6 @@
                 <div class="options-group">
                     <h3>Mechanical Testing</h3>
                     <div class="checkbox-container">
-                        <input id="mech_testing-na" type="checkbox">
-                        <span>N/A</span>
-                    </div>
-                    <div class="checkbox-container">
                         <input id="mech_testing-tension" type="checkbox">
                         <span>Tension</span>
                     </div>
@@ -154,6 +146,14 @@
                         <input id="mech_testing-fatigue" type="checkbox">
                         <span>Fatigue</span>
                     </div>
+                    <div class="checkbox-container">
+                        <input id="mech_testing-static" type="checkbox">
+                        <span>Static</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="mech_testing-torsion" type="checkbox">
+                        <span>Torsion</span>
+                    </div>
                 </div>
                 <div class="options-group">
                     <h3>Force Ranges</h3>
@@ -166,8 +166,12 @@
                         <span>N</span>
                     </div>
                     <div class="checkbox-container">
-                        <input id="force_ranges-nk" type="checkbox">
+                        <input id="force_ranges-kn" type="checkbox">
                         <span>kN</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <input id="force_ranges-gt250-kn" type="checkbox">
+                        <span>>250 kN</span>
                     </div>
                 </div>
                 <div class="options-group">

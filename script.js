@@ -46,8 +46,11 @@ function updateInstruments() {
             instrumentDiv.classList.add("greyed-out");
         }
     }
-    msg.textContent = anySuccess ? 'Narrow down instruments by selecting from the options below.' 
-                                 : 'No instruments match the selected options.';
+
+    const defaultMessage = document.querySelector('#msg').textContent;
+
+    msg.textContent = anySuccess ? defaultMessage 
+                                 : 'No instruments match the selected criteria.';
     msg.style.color = anySuccess ? "#21314d" : 'red';
 }
 

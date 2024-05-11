@@ -13,7 +13,7 @@ h1 {
     
 /* flex container */
 #flex-container {
-    margin: 2rem;
+    margin: 2rem 4rem;
     display: flex;
     justify-content: center;
 }
@@ -42,6 +42,7 @@ h1 {
     background-color: #a0a0a0;
     pointer-events: none;
     cursor: default;
+    transition: 0.2s;
 }
 
 a {
@@ -63,17 +64,17 @@ a:hover {
     display: flex;
     justify-content: left;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: 8px;
 }
 
 .options-group {
-    width: 13rem;
+    width: 14rem;
     background-color: #CFDCE9;
-    padding: 12px;
+    padding: 12px 12px 24px 12px;
 }
 
 .options-group h3 {
-    margin: 0 0 10px 0;
+    margin: 0 0 8px 0;
     font-size: 20px;
     font-weight: 700;
 }
@@ -98,7 +99,7 @@ input[type="checkbox"] {
     background-color: #fff;
     padding: 4px;
     color: #21314d;
-    width: 20px;
+    min-width: 20px;
     height: 20px;
     border: 2.5px solid #21314d;
     border-radius: 2px;
@@ -107,6 +108,7 @@ input[type="checkbox"] {
 
 input[type="checkbox"]:hover {
     background-color: #879EC3;
+    transition: 0.3s;
 }
 
 input[type="checkbox"]:checked {
@@ -116,15 +118,17 @@ input[type="checkbox"]:checked {
 button {
     margin-top: 20px;
     cursor: pointer;
-    border: 3px solid #21314d;
+    border: 2px solid #21314d;
     background-color: white;
     color: #21314d;
     padding: 8px;
     font-size: medium;
+    border-radius: 4px;
 }
 
 button:hover {
     background-color: #21314d;
     color: white;
     cursor: pointer;
+    transition: 0.3s;
 }

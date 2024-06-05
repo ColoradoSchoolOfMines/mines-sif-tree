@@ -36,6 +36,7 @@ h1 {
     margin: 1px;
     height: auto;
     padding: 3px 10px;
+    transition: 0.3s;
 }
 
 .greyed-out {
@@ -53,27 +54,27 @@ a:hover {
     text-decoration: underline;
 }
 
-/* options panel*/
-#options-panel {
+/* criteria panel*/
+#criteria-panel {
     color: #21314d;
     width: 128rem;
     margin-left: 2rem
 }
 
-.options-container {
+.criteria-container {
     display: flex;
     justify-content: left;
     flex-wrap: wrap;
     gap: 8px;
 }
 
-.options-group {
+.criteria-group {
     width: 14rem;
     background-color: #CFDCE9;
     padding: 12px 12px 24px 12px;
 }
 
-.options-group h3 {
+.criteria-group h3 {
     margin: 0 0 8px 0;
     font-size: 20px;
     font-weight: 700;

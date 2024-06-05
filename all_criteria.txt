@@ -1,0 +1,53 @@
+Phase:
+    "phase-solid"
+    "phase-liquid"
+
+Solid Form:
+    "solid_form-crystalline"
+    "solid_form-amorphous"
+    "solid_form-thin_film"
+    "solid_form-powder"
+
+Solid Properties:
+    "solid_props-phase"
+    "solid_props-crystallographic_texture"
+    "solid_props-strain"
+    "solid_props-chemical_bonding"
+
+Spatial Resolution:
+    "spatial_res-mm"
+    "spatial_res-um"
+    "spatial_res-nm"
+
+Dimensionality:
+    "dimensionality-1d"
+    "dimensionality-2d"
+    "dimensionality-3d"
+
+Compositional Sensitivity:
+    "comp_sensitivity-a_few_at_%"
+    "comp_sensitivity-ppm"
+
+Temperature:
+    "temp-room"
+    "temp-heated"
+    "temp-cooled"
+
+Mechanical Testing:
+    "mech_testing-tension"
+    "mech_testing-compression"
+    "mech_testing-bending"
+    "mech_testing-fatigue"
+    "mech_testing-torsion"
+    "mech_testing-static"
+
+Force Ranges:
+    "force_ranges-nn"
+    "force_ranges-n"
+    "force_ranges-kn"
+    "force_ranges-gt250kn"
+
+Atmosphere:
+    "atmosphere-ambient"
+    "atmosphere-vacuum"
+    "atmosphere-other"

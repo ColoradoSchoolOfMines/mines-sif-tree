@@ -5,22 +5,22 @@ const msg = document.getElementById("msg");
 
 const clearBtn = document.getElementById("clear-btn");
 clearBtn.addEventListener('click', () => {
-    clearOptions();
+    clearCriteria();
 });
 
-let selectedOptions = [];
+let selectedCriteria = [];
 
 function addOption(option) {
-    selectedOptions.push(option);
+    selectedCriteria.push(option);
 }
 
 function removeOption(optionToRemove) {
-    selectedOptions.splice(selectedOptions.indexOf(optionToRemove), 1);
+    selectedCriteria.splice(selectedCriteria.indexOf(optionToRemove), 1);
 }
 
-function clearOptions(){
-    while (selectedOptions.length > 0) {
-        selectedOptions.pop();
+function clearCriteria(){
+    while (selectedCriteria.length > 0) {
+        selectedCriteria.pop();
     }
     for (let container of checkboxContainers) {
         container.querySelector("input").checked = false;
@@ -32,8 +32,8 @@ function updateInstruments() {
     let anySuccess = false;
     for (let name in data) {
         let match = true;
-        for (let i = 0; i < selectedOptions.length; i++) {
-            if (!data[name][selectedOptions[i]]) {
+        for (let i = 0; i < selectedCriteria.length; i++) {
+            if (!data[name][selectedCriteria[i]]) {
                 match = false;
                 break;
             }

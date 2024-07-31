@@ -457,7 +457,7 @@ const data = {
         "temp-room": true,
         "atmosphere-ambient": true,
     },
-    "Malvern Panalytical Empyrean X-ray Diffractometer": {
+    "Panalytical Empyrean X-ray Diffractometer": {
         "link": "https://www.mines.edu/shared-facilities/project/malvern-panalytical-empyrean-x-ray-diffractometer/",
         "phase-solid": true,
         "solid_form-crystalline": true,
@@ -511,7 +511,7 @@ const data = {
         "atmosphere-ambient": true,
     },
     "Extensometer": {
-        "link": "",     // TODO: get this link!!! <==========================================
+        "link": "https://www.mines.edu/shared-facilities/project/strain/",
         "phase-solid": true,
         "solid_form-crystalline": true,
         "solid_form-amorphous": true,
@@ -531,7 +531,7 @@ const data = {
         "atmosphere-other": true,
     },
     "Digital Image Correlation": {
-        "link": "",     // TODO: get this link!!! <==========================================
+        "link": "https://www.mines.edu/shared-facilities/project/strain/",
         "phase-solid": true,
         "solid_form-crystalline": true,
         "solid_form-amorphous": true,
@@ -557,7 +557,7 @@ const data = {
         "atmosphere-other": true,
     },
     "MTS Environmental Chamber": {
-        "link": "",     // TODO: get this link!!! <==========================================
+        "link": "https://www.mines.edu/shared-facilities/project/electromechanical/",
         "phase-solid": true,
         "solid_form-crystalline": true,
         "solid_form-amorphous": true,
@@ -572,7 +572,7 @@ const data = {
         "atmosphere-ambient": true,
     },
     "Induction Furnace": {
-        "link": "",     // TODO: get this link!!! <==========================================
+        "link": "https://www.mines.edu/shared-facilities/project/strain/",
         "phase-solid": true,
         "solid_form-crystalline": true,
         "solid_form-amorphous": true,
@@ -586,7 +586,7 @@ const data = {
         "force_ranges-kn": true,
         "atmosphere-ambient": true,
     }, 
-    "Gleeble": {
+    "DSI GLEEBLE 3500-GTC": {
         "link": "https://www.mines.edu/shared-facilities/project/gleeble/",
         "phase-solid": true,
         "solid_form-crystalline": true,
@@ -607,7 +607,7 @@ const data = {
         "atmosphere-other": true,
     },
     "MARK-10 ESM1500": {
-        "link": "",     // TODO: get this link!!! <==========================================
+        "link": "https://www.mines.edu/shared-facilities/project/electromechanical/",
         "phase-solid": true,
         "solid_form-crystalline": true,
         "solid_form-amorphous": true,
@@ -626,7 +626,7 @@ const data = {
         "atmosphere-ambient": true,
     },
     "MTS Alliance RT/100": {
-        "link": "",     // TODO: get this link!!! <==========================================
+        "link": "https://www.mines.edu/shared-facilities/project/electromechanical/",
         "phase-solid": true,
         "solid_form-crystalline": true,
         "solid_form-amorphous": true,
@@ -644,7 +644,7 @@ const data = {
         "atmosphere-ambient": true,
     },
     "Instru-Met ReNew 1125": {
-        "link": "",     // TODO: get this link!!! <==========================================
+        "link": "https://www.mines.edu/shared-facilities/project/electromechanical/",
         "phase-solid": true,
         "solid_form-crystalline": true,
         "solid_form-amorphous": true,
@@ -663,7 +663,7 @@ const data = {
         "atmosphere-ambient": true,
     }, 
     "SF-1-U": {
-        "link": "",     // TODO: get this link!!! <==========================================
+        "link": "https://www.mines.edu/shared-facilities/project/fatigue/",
         "phase-solid": true,
         "solid_form-crystalline": true,
         "solid_form-amorphous": true,
@@ -688,7 +688,7 @@ const data = {
         "atmosphere-ambient": true,
     },
     "MTS Landmark 370.10": {
-        "link": "",     // TODO: get this link!!! <==========================================
+        "link": "https://www.mines.edu/shared-facilities/project/servohydraulic/",
         "phase-solid": true,
         "solid_form-crystalline": true,
         "solid_form-amorphous": true,
@@ -708,7 +708,7 @@ const data = {
         "atmosphere-ambient": true,
     },
     "MTS Landmark 370.25": {
-        "link": "",     // TODO: get this link!!! <==========================================
+        "link": "https://www.mines.edu/shared-facilities/project/servohydraulic/",
         "phase-solid": true,
         "solid_form-crystalline": true,
         "solid_form-amorphous": true,
@@ -728,7 +728,7 @@ const data = {
         "atmosphere-ambient": true,
     },
     "MTS 312.21 Top Actuator": {
-        "link": "",     // TODO: get this link!!! <==========================================
+        "link": "https://www.mines.edu/shared-facilities/project/servohydraulic/",
         "phase-solid": true,
         "solid_form-crystalline": true,
         "solid_form-amorphous": true,
@@ -747,7 +747,7 @@ const data = {
         "atmosphere-ambient": true,
     },
     "MTS 312.21 Hydraulic Grips": {
-        "link": "",     // TODO: get this link!!! <==========================================
+        "link": "https://www.mines.edu/shared-facilities/project/servohydraulic/",
         "phase-solid": true,
         "solid_form-crystalline": true,
         "solid_form-amorphous": true,
@@ -766,7 +766,7 @@ const data = {
         "atmosphere-ambient": true,
     },
     "MTS 312.21 BUT": {
-        "link": "",     // TODO: get this link!!! <==========================================
+        "link": "https://www.mines.edu/shared-facilities/project/servohydraulic/",
         "phase-solid": true,
         "solid_form-crystalline": true,
         "solid_form-amorphous": true,
@@ -785,7 +785,7 @@ const data = {
         "atmosphere-ambient": true,
     },
     "MTS 312.41": {
-        "link": "",     // TODO: get this link!!! <==========================================
+        "link": "https://www.mines.edu/shared-facilities/project/servohydraulic/",
         "phase-solid": true,
         "solid_form-crystalline": true,
         "solid_form-amorphous": true,

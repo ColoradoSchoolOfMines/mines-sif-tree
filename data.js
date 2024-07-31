@@ -676,7 +676,7 @@ const data = {
         "atmosphere-ambient": true,
     },
     "Rotating Bending Fatigue": {
-        "link": "",     // TODO: get this link!!! <==========================================
+        "link": "https://www.mines.edu/shared-facilities/project/fatigue/",
         "phase-solid": true,
         "solid_form-crystalline": true,
         "solid_form-amorphous": true,

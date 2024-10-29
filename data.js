@@ -117,7 +117,6 @@ const data = {
     "FEI Helios FIB/SEM": {
         "link": "https://www.mines.edu/shared-facilities/project/fei-helios-nanolab-600i-fib-sem/",
         "phase-solid": true,
-        "phase-liquid": true,
         "solid_form-crystalline": true,
         "solid_form-amorphous": true,
         "solid_form-thin_film": true,

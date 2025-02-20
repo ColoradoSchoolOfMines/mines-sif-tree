@@ -160,8 +160,8 @@ const data = {
         "atmosphere-vacuum": true,
         "atmosphere-other": true,
     },
-    "JEOL JSM-7000F": {
-        "link": "https://www.mines.edu/shared-facilities/project/jeol-jsf-7000f-field-emission-sem/",
+    "FEI Nova NanoSEM": {
+        "link": "https://www.mines.edu/shared-facilities/project/nova-nanosem/",
         "phase-solid": true,
         "solid_form-crystalline": true,
         "solid_form-amorphous": true,
@@ -177,6 +177,7 @@ const data = {
         "comp_sensitivity-a_few_at_%": true,
         "temp-room": true,
         "atmosphere-vacuum": true,
+        "atmosphere-other": true,
     },
     "FEI Quanta ESEM": {
         "link": "https://www.mines.edu/shared-facilities/project/fei-quanta-600i-environmental-sem/",
